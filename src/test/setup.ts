@@ -5,9 +5,11 @@ import { resetMockData } from '../mocks/handlers'
 import { server } from '../mocks/server'
 import { useSessionStore } from '../stores/useSessionStore'
 import { useUiStore } from '../stores/useUiStore'
+import { useWatchlistStore } from '../stores/useWatchlistStore'
 
 const initialUiState = useUiStore.getState()
 const initialSessionState = useSessionStore.getState()
+const initialWatchlistState = useWatchlistStore.getState()
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 afterEach(() => {
@@ -15,6 +17,8 @@ afterEach(() => {
   resetMockData()
   useUiStore.setState(initialUiState, true)
   useSessionStore.setState(initialSessionState, true)
+  useWatchlistStore.setState(initialWatchlistState, true)
+  localStorage.clear()
   cleanup()
 })
 afterAll(() => server.close())
