@@ -49,7 +49,7 @@ export function ShowDetailPage() {
             <p className="max-w-[620px] text-[0.9375rem] leading-[1.375rem]">{show.synopsis}</p>
           )}
           <div className="flex flex-wrap items-center gap-4">
-            <AddToWatchlistButton show={show} prominent />
+            <AddToWatchlistButton show={show} look="detail" />
             <a
               href={show.url}
               target="_blank"

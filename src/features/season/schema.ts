@@ -22,6 +22,17 @@ export const jikanAnimeSchema = z.object({
   // The season it first aired in, e.g. "fall" / 2026; missing for older or unscheduled shows.
   season: z.string().nullish(),
   year: z.number().int().nullish(),
+  // YouTube trailer thumbnails (16:9) — the only wide artwork Jikan has; all null without a trailer.
+  trailer: z
+    .object({
+      images: z
+        .object({
+          maximum_image_url: z.string().nullish(),
+          large_image_url: z.string().nullish(),
+        })
+        .nullish(),
+    })
+    .nullish(),
 })
 export type JikanAnime = z.input<typeof jikanAnimeSchema>
 
@@ -38,6 +49,8 @@ export function toShow(raw: z.output<typeof jikanAnimeSchema>): Show {
     id: raw.mal_id,
     title: raw.title_english || raw.title,
     imageUrl: webp?.large_image_url ?? jpg?.large_image_url ?? null,
+    bannerUrl:
+      raw.trailer?.images?.maximum_image_url ?? raw.trailer?.images?.large_image_url ?? null,
     studio: raw.studios[0]?.name ?? null,
     airingDay: raw.broadcast?.day ?? null,
     episodes: raw.episodes ?? null,

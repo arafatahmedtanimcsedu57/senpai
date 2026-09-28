@@ -32,3 +32,13 @@ describe('AddToWatchlistButton', () => {
     expect(screen.getByRole('button', { name: 'Add to watchlist' })).toBeEnabled()
   })
 })
+
+describe('AddToWatchlistButton on the hero', () => {
+  it('names the button with the show title and keeps the visible words', async () => {
+    render(<AddToWatchlistButton show={show} look="hero" />)
+    const button = screen.getByRole('button', { name: 'Add to watchlist: Blue Lock' })
+    expect(button).toHaveTextContent('Watchlist')
+    await userEvent.click(button)
+    expect(screen.getByRole('button', { name: 'In watchlist: Blue Lock' })).toBeDisabled()
+  })
+})

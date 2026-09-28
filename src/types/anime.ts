@@ -11,6 +11,8 @@ export interface Show {
   id: number
   title: string
   imageUrl: string | null
+  /** Wide 16:9 artwork (the trailer thumbnail), for the featured hero. */
+  bannerUrl?: string | null
   studio: string | null
   /** e.g. "Fridays" — as Jikan words it. */
   airingDay: string | null
