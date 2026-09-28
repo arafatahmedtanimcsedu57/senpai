@@ -1,4 +1,5 @@
-import type { RouteObject } from 'react-router'
+import { data, type RouteObject } from 'react-router'
+import { parseSeasonParams } from '../lib/season'
 import { RootLayout } from './RootLayout'
 import { RouteError } from './RouteError'
 import { RouteLoading } from './RouteLoading'
@@ -15,7 +16,16 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        lazy: async () => ({ Component: (await import('./HomePage')).HomePage }),
+        lazy: async () => ({ Component: (await import('./SeasonPage')).SeasonPage }),
+      },
+      {
+        path: 'season/:year/:season',
+        // A malformed season (e.g. /season/2025/autumn) is a 404, shown by RouteError.
+        loader: ({ params }) => {
+          if (!parseSeasonParams(params)) throw data(null, { status: 404 })
+          return null
+        },
+        lazy: async () => ({ Component: (await import('./SeasonPage')).SeasonPage }),
       },
     ],
   },

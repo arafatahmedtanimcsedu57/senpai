@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { isSeasonName, nextSeason, prevSeason, seasonLabel, seasonOf } from './season'
+import {
+  isSameSeason,
+  isSeasonName,
+  parseSeasonParams,
+  nextSeason,
+  prevSeason,
+  seasonLabel,
+  seasonOf,
+  seasonPath,
+} from './season'
 
 describe('seasonOf', () => {
   it.each([
@@ -38,5 +47,34 @@ describe('isSeasonName', () => {
   it('accepts the four seasons only', () => {
     expect(isSeasonName('summer')).toBe(true)
     expect(isSeasonName('autumn')).toBe(false)
+  })
+})
+
+describe('seasonPath / isSameSeason', () => {
+  it('builds the season URL', () => {
+    expect(seasonPath({ year: 2027, season: 'winter' })).toBe('/season/2027/winter')
+  })
+
+  it('compares seasons by year and name', () => {
+    expect(isSameSeason({ year: 2026, season: 'fall' }, { year: 2026, season: 'fall' })).toBe(true)
+    expect(isSameSeason({ year: 2026, season: 'fall' }, { year: 2025, season: 'fall' })).toBe(false)
+  })
+})
+
+describe('parseSeasonParams', () => {
+  it('reads a valid year and season', () => {
+    expect(parseSeasonParams({ year: '2025', season: 'spring' })).toEqual({
+      year: 2025,
+      season: 'spring',
+    })
+  })
+
+  it.each([
+    [{ year: '2025', season: 'autumn' }],
+    [{ year: '25', season: 'fall' }],
+    [{ year: 'abcd', season: 'fall' }],
+    [{}],
+  ])('rejects %j', (params) => {
+    expect(parseSeasonParams(params)).toBeNull()
   })
 })

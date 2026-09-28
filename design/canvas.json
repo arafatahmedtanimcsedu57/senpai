@@ -1,0 +1,393 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "season-browser/Default-desktop.dc.html": {
+      "h": 1080,
+      "page": "season-browser",
+      "title": "Default · desktop",
+      "w": 1280,
+      "x": 0,
+      "y": 964
+    },
+    "season-browser/Default-mobile.dc.html": {
+      "h": 844,
+      "page": "season-browser",
+      "title": "Default · mobile",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "season-browser/Detail-desktop.dc.html": {
+      "h": 1080,
+      "page": "season-browser",
+      "title": "Detail · desktop",
+      "w": 1280,
+      "x": 5440,
+      "y": 964
+    },
+    "season-browser/Detail-mobile.dc.html": {
+      "h": 844,
+      "page": "season-browser",
+      "title": "Detail · mobile",
+      "w": 390,
+      "x": 1880,
+      "y": 0
+    },
+    "season-browser/Empty-desktop.dc.html": {
+      "h": 1080,
+      "page": "season-browser",
+      "title": "Empty · desktop",
+      "w": 1280,
+      "x": 2720,
+      "y": 964
+    },
+    "season-browser/Empty-mobile.dc.html": {
+      "h": 844,
+      "page": "season-browser",
+      "title": "Empty · mobile",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "season-browser/Error-desktop.dc.html": {
+      "h": 1080,
+      "page": "season-browser",
+      "title": "Error · desktop",
+      "w": 1280,
+      "x": 4080,
+      "y": 964
+    },
+    "season-browser/Error-mobile.dc.html": {
+      "h": 844,
+      "page": "season-browser",
+      "title": "Error · mobile",
+      "w": 390,
+      "x": 1410,
+      "y": 0
+    },
+    "season-browser/Loading-desktop.dc.html": {
+      "h": 1080,
+      "page": "season-browser",
+      "title": "Loading · desktop",
+      "w": 1280,
+      "x": 1360,
+      "y": 964
+    },
+    "season-browser/Loading-mobile.dc.html": {
+      "h": 844,
+      "page": "season-browser",
+      "title": "Loading · mobile",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "tier-list/Default-desktop.dc.html": {
+      "h": 1080,
+      "page": "tier-list",
+      "title": "Default · desktop",
+      "w": 1280,
+      "x": 0,
+      "y": 964
+    },
+    "tier-list/Default-mobile.dc.html": {
+      "h": 844,
+      "page": "tier-list",
+      "title": "Default · mobile",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "tier-list/EmptyPool-desktop.dc.html": {
+      "h": 1080,
+      "page": "tier-list",
+      "title": "Empty pool · desktop",
+      "w": 1280,
+      "x": 1360,
+      "y": 964
+    },
+    "tier-list/EmptyPool-mobile.dc.html": {
+      "h": 844,
+      "page": "tier-list",
+      "title": "Empty pool · mobile",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "tier-list/NotFound-desktop.dc.html": {
+      "h": 1080,
+      "page": "tier-list",
+      "title": "Not found · desktop",
+      "w": 1280,
+      "x": 2720,
+      "y": 964
+    },
+    "tier-list/NotFound-mobile.dc.html": {
+      "h": 844,
+      "page": "tier-list",
+      "title": "Not found · mobile",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "watchlist/Complete-desktop.dc.html": {
+      "h": 1080,
+      "page": "watchlist",
+      "title": "Mark completed · desktop",
+      "w": 1280,
+      "x": 4080,
+      "y": 964
+    },
+    "watchlist/Complete-mobile.dc.html": {
+      "h": 844,
+      "page": "watchlist",
+      "title": "Mark completed · mobile",
+      "w": 390,
+      "x": 1410,
+      "y": 0
+    },
+    "watchlist/Default-desktop.dc.html": {
+      "h": 1080,
+      "page": "watchlist",
+      "title": "Default · desktop",
+      "w": 1280,
+      "x": 0,
+      "y": 964
+    },
+    "watchlist/Default-mobile.dc.html": {
+      "h": 844,
+      "page": "watchlist",
+      "title": "Default · mobile",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "watchlist/Empty-desktop.dc.html": {
+      "h": 1080,
+      "page": "watchlist",
+      "title": "Empty · desktop",
+      "w": 1280,
+      "x": 1360,
+      "y": 964
+    },
+    "watchlist/Empty-mobile.dc.html": {
+      "h": 844,
+      "page": "watchlist",
+      "title": "Empty · mobile",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "watchlist/Removed-desktop.dc.html": {
+      "h": 1080,
+      "page": "watchlist",
+      "title": "Removed · desktop",
+      "w": 1280,
+      "x": 5440,
+      "y": 964
+    },
+    "watchlist/Removed-mobile.dc.html": {
+      "h": 844,
+      "page": "watchlist",
+      "title": "Removed · mobile",
+      "w": 390,
+      "x": 1880,
+      "y": 0
+    },
+    "watchlist/SaveError-desktop.dc.html": {
+      "h": 1080,
+      "page": "watchlist",
+      "title": "Save error · desktop",
+      "w": 1280,
+      "x": 2720,
+      "y": 964
+    },
+    "watchlist/SaveError-mobile.dc.html": {
+      "h": 844,
+      "page": "watchlist",
+      "title": "Save error · mobile",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-28T15:56:48Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/artifact/9mqJBv2FRVSgAN2TAxqzRS",
+      "copiedAt": "2026-09-28T15:56:48Z",
+      "namespace": "senpai",
+      "title": "Senpai",
+      "version": "1790610807-5382"
+    }
+  ],
+  "launch": {
+    "page": "season-browser",
+    "view": "canvas"
+  },
+  "notes": {
+    "season-browser-q0": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "season-browser",
+      "text": "Open question: filters / sort (genre, format TV/movie, popularity) in v1? Not drawn yet.",
+      "w": 440,
+      "x": -560,
+      "y": 0
+    },
+    "season-browser-q1": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "season-browser",
+      "text": "Covers are placeholders here — the app shows Jikan cover art; missing cover → this placeholder.",
+      "w": 440,
+      "x": -560,
+      "y": 320
+    },
+    "season-browser-title": {
+      "kind": "title1",
+      "maxW": 6720,
+      "page": "season-browser",
+      "text": "Season browser",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "tier-list-q0": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "tier-list",
+      "text": "Open question: sharing without a backend — export as an image, or a link with the list encoded in the URL?",
+      "w": 440,
+      "x": -560,
+      "y": 0
+    },
+    "tier-list-q1": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "tier-list",
+      "text": "Open question: several tier lists per user, or one per season?",
+      "w": 440,
+      "x": -560,
+      "y": 320
+    },
+    "tier-list-q2": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "tier-list",
+      "text": "Open question: custom tier names / colours?",
+      "w": 440,
+      "x": -560,
+      "y": 640
+    },
+    "tier-list-title": {
+      "kind": "title1",
+      "maxW": 4000,
+      "page": "tier-list",
+      "text": "Tier list",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "watchlist-q0": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "watchlist",
+      "text": "Drawn as tabs. features.md says 'Tabs or a filter by status' — confirm tabs.",
+      "w": 440,
+      "x": -560,
+      "y": 0
+    },
+    "watchlist-q1": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "watchlist",
+      "text": "Unknown total (Kaiju No. 8): shows '3 / ?' and +1 never stops.",
+      "w": 440,
+      "x": -560,
+      "y": 320
+    },
+    "watchlist-title": {
+      "kind": "title1",
+      "maxW": 6720,
+      "page": "watchlist",
+      "text": "Watchlist + episode tracking",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "season-browser-q2": {
+      "x": -560,
+      "y": 640,
+      "text": "Open (show-detail): Detail Loading / Error / Not-found aren't drawn. Default: skeleton; 'Could not load this show. Try again.' + Retry; 'This show doesn't exist.' + link to this season.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "season-browser"
+    },
+    "season-browser-q3": {
+      "x": -560,
+      "y": 960,
+      "text": "Open (show-detail): nav shows only 'Season' until Watchlist / Tier list ship, so no tab leads to 'Page not found'.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "season-browser"
+    },
+    "season-browser-q4": {
+      "x": -560,
+      "y": 1280,
+      "text": "Open (season-browser-ui): 'In watchlist ✓' on a card is a disabled state; removing happens on the Watchlist page.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "season-browser"
+    }
+  },
+  "order": [
+    "season-browser/Default-mobile.dc.html",
+    "season-browser/Loading-mobile.dc.html",
+    "season-browser/Empty-mobile.dc.html",
+    "season-browser/Error-mobile.dc.html",
+    "season-browser/Detail-mobile.dc.html",
+    "season-browser/Default-desktop.dc.html",
+    "season-browser/Loading-desktop.dc.html",
+    "season-browser/Empty-desktop.dc.html",
+    "season-browser/Error-desktop.dc.html",
+    "season-browser/Detail-desktop.dc.html",
+    "watchlist/Default-mobile.dc.html",
+    "watchlist/Empty-mobile.dc.html",
+    "watchlist/SaveError-mobile.dc.html",
+    "watchlist/Complete-mobile.dc.html",
+    "watchlist/Removed-mobile.dc.html",
+    "watchlist/Default-desktop.dc.html",
+    "watchlist/Empty-desktop.dc.html",
+    "watchlist/SaveError-desktop.dc.html",
+    "watchlist/Complete-desktop.dc.html",
+    "watchlist/Removed-desktop.dc.html",
+    "tier-list/Default-mobile.dc.html",
+    "tier-list/EmptyPool-mobile.dc.html",
+    "tier-list/NotFound-mobile.dc.html",
+    "tier-list/Default-desktop.dc.html",
+    "tier-list/EmptyPool-desktop.dc.html",
+    "tier-list/NotFound-desktop.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "season-browser",
+      "name": "Season browser"
+    },
+    {
+      "id": "watchlist",
+      "name": "Watchlist + episode tracking"
+    },
+    {
+      "id": "tier-list",
+      "name": "Tier list"
+    }
+  ],
+  "title": "senpai"
+}
