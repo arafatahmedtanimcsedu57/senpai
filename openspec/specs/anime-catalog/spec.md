@@ -30,8 +30,9 @@ fall), with each show appearing once, ordered most popular first.
 ### Requirement: Show fields
 
 Each show SHALL expose an id, a title (English when available, else the default title), a
-cover image URL or none, the first studio or none, the airing day or none, the episode count
-or none, genres, a synopsis or none, and its MyAnimeList URL.
+cover image URL or none, a wide artwork URL (the trailer thumbnail) or none, the first studio
+or none, the airing day or none, the episode count or none, genres, a synopsis or none, and
+its MyAnimeList URL.
 
 #### Scenario: Unknown episode count
 
@@ -42,6 +43,11 @@ or none, genres, a synopsis or none, and its MyAnimeList URL.
 
 - **WHEN** a show has no English title
 - **THEN** its default title is used
+
+#### Scenario: No trailer
+
+- **WHEN** Jikan reports no trailer images for a show
+- **THEN** the show's wide artwork is none
 
 ### Requirement: Single show
 
