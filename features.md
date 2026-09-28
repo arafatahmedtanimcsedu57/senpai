@@ -32,6 +32,10 @@ write it under "Open questions" rather than letting the agent guess.
 - Prev / next arrows switch to other seasons.
 - Each card has "Add to watchlist"; once added it reads "In watchlist ✓".
 - Clicking a card opens a detail page: synopsis, genres, episodes, link to MyAnimeList.
+- A featured hero tops the season (added on the canvas after the first build): the season's
+  most popular show with wide key art, a "FEATURED · FALL 2026" badge, title, studio · day ·
+  episodes, a two-line synopsis on desktop, and "Add to watchlist" + "More info" (opens its
+  detail page). The show also stays in the grid.
 
 **States**
 
@@ -43,6 +47,7 @@ write it under "Open questions" rather than letting the agent guess.
 
 - Unknown episode count → "? eps".
 - Missing cover → placeholder image.
+- No wide artwork for the featured show → its poster fills the hero.
 
 **Open questions**
 

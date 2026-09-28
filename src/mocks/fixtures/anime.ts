@@ -32,6 +32,14 @@ function anime(
     genres: genres.map((name) => ({ name })),
     broadcast: { day: extra.day },
     // Sakamoto Days has no season, so the "no season" path stays covered.
+    // Wide art: full size for the most popular show, only "large" for Frieren, none elsewhere.
+    trailer: {
+      images: {
+        maximum_image_url:
+          id === 40748 ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg` : null,
+        large_image_url: id === 52991 ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null,
+      },
+    },
     season: id === 58939 ? null : 'fall',
     year: id === 58939 ? null : 2026,
   }

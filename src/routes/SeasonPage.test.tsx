@@ -23,9 +23,9 @@ describe('SeasonPage', () => {
   it('shows every show of the season as a card, most popular first', async () => {
     renderRoute('/season/2026/fall')
     expect(await screen.findByRole('status', { name: 'Loading shows' })).toBeInTheDocument()
-    const titles = await screen.findAllByRole('heading', { level: 2 })
-    expect(titles).toHaveLength(rawAnime.length)
-    expect(titles[0]).toHaveTextContent('Jujutsu Kaisen')
+    const cards = await screen.findAllByRole('article')
+    expect(cards).toHaveLength(rawAnime.length)
+    expect(cards[0]).toHaveTextContent('Jujutsu Kaisen')
     expect(screen.getByRole('heading', { level: 1, name: 'Fall 2026' })).toBeInTheDocument()
     expect(screen.getByText(`${rawAnime.length} shows`)).toBeInTheDocument()
   })
@@ -38,11 +38,33 @@ describe('SeasonPage', () => {
     expect(useWatchlistStore.getState().has(57334)).toBe(true)
   })
 
+  it('features the most popular show in the hero, which stays in the grid', async () => {
+    renderRoute('/season/2026/fall')
+    const hero = await screen.findByRole('region', { name: 'Jujutsu Kaisen' })
+    expect(within(hero).getByText('FEATURED', { exact: false })).toHaveTextContent('FALL 2026')
+    expect(within(hero).getByRole('link', { name: /More info/ })).toHaveAttribute(
+      'href',
+      '/anime/40748',
+    )
+    expect(screen.getAllByRole('article')[0]).toHaveTextContent('Jujutsu Kaisen')
+  })
+
+  it('adding from the hero marks the card too', async () => {
+    renderRoute('/season/2026/fall')
+    const hero = await screen.findByRole('region', { name: 'Jujutsu Kaisen' })
+    await userEvent.click(within(hero).getByRole('button', { name: /Add to watchlist/ }))
+    expect(within(hero).getByRole('button', { name: /In watchlist/ })).toBeDisabled()
+    expect(
+      within(screen.getAllByRole('article')[0]).getByRole('button', { name: 'In watchlist' }),
+    ).toBeDisabled()
+  })
+
   it('shows the empty state for a season with no shows', async () => {
     server.use(http.get(seasonUrl, () => HttpResponse.json(emptyPage)))
     renderRoute('/season/1990/winter')
     expect(await screen.findByText('No shows found for this season.')).toBeInTheDocument()
     expect(screen.getByText('0 shows')).toBeInTheDocument()
+    expect(screen.queryByRole('region')).not.toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Next season: Spring 1990' })).toBeInTheDocument()
   })
 
@@ -52,9 +74,10 @@ describe('SeasonPage', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(
       'Could not load the season. Try again.',
     )
+    expect(screen.queryByRole('region')).not.toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', { name: 'Retry' }))
     expect(screen.getByRole('heading', { level: 1, name: 'Fall 2026' })).toHaveFocus()
-    expect(await screen.findAllByRole('heading', { level: 2 })).toHaveLength(rawAnime.length)
+    expect(await screen.findAllByRole('article')).toHaveLength(rawAnime.length)
     expect(screen.queryByRole('alert')).not.toBeInTheDocument()
   })
 

@@ -10,6 +10,7 @@ describe('jikanAnimeSchema + toShow', () => {
       id: frieren.mal_id,
       title: "Frieren: Beyond Journey's End",
       imageUrl: frieren.images.webp?.large_image_url,
+      bannerUrl: 'https://img.youtube.com/vi/52991/hqdefault.jpg',
       studio: 'Madhouse',
       airingDay: 'Fridays',
       episodes: 28,
@@ -19,6 +20,20 @@ describe('jikanAnimeSchema + toShow', () => {
       members: 1_200_000,
       seasonId: { year: 2026, season: 'fall' },
     })
+  })
+
+  it('prefers the full-size trailer image, then the large one, then none', () => {
+    const images = (maximum: string | null, large: string | null) =>
+      toShow(
+        jikanAnimeSchema.parse({
+          ...frieren,
+          trailer: { images: { maximum_image_url: maximum, large_image_url: large } },
+        }),
+      ).bannerUrl
+    expect(images('max.jpg', 'large.jpg')).toBe('max.jpg')
+    expect(images(null, 'large.jpg')).toBe('large.jpg')
+    expect(images(null, null)).toBeNull()
+    expect(toShow(jikanAnimeSchema.parse({ ...frieren, trailer: null })).bannerUrl).toBeNull()
   })
 
   it('has no season when Jikan gives none or an unknown one', () => {

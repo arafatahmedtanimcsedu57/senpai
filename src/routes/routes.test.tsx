@@ -17,6 +17,18 @@ describe('routes', () => {
     expect(await screen.findByRole('heading', { level: 1, name: label })).toBeInTheDocument()
   })
 
+  it('overlays the header on season pages only', async () => {
+    const { container } = renderRoute('/season/2026/fall')
+    await screen.findByRole('heading', { level: 1, name: 'Fall 2026' })
+    expect(container.querySelector('header')).toHaveAttribute('data-hero', 'true')
+  })
+
+  it('keeps the solid header on other pages', async () => {
+    const { container } = renderRoute('/anime/57334')
+    await screen.findByRole('heading', { level: 1, name: 'Dan Da Dan' })
+    expect(container.querySelector('header')).not.toHaveAttribute('data-hero')
+  })
+
   it('shows "Page not found" for an unknown URL', async () => {
     renderRoute('/does-not-exist')
     expect(await screen.findByRole('heading', { name: /page not found/i })).toBeInTheDocument()

@@ -247,6 +247,33 @@
       "x": -560,
       "y": 320
     },
+    "season-browser-q2": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "season-browser",
+      "text": "Open (show-detail): Detail Loading / Error / Not-found aren't drawn. Default: skeleton; 'Could not load this show. Try again.' + Retry; 'This show doesn't exist.' + link to this season.",
+      "w": 440,
+      "x": -560,
+      "y": 640
+    },
+    "season-browser-q3": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "season-browser",
+      "text": "Open (show-detail): nav shows only 'Season' until Watchlist / Tier list ship, so no tab leads to 'Page not found'.",
+      "w": 440,
+      "x": -560,
+      "y": 960
+    },
+    "season-browser-q4": {
+      "fill": "orange",
+      "maxH": 280,
+      "page": "season-browser",
+      "text": "Open (season-browser-ui): 'In watchlist ✓' on a card is a disabled state; removing happens on the Watchlist page.",
+      "w": 440,
+      "x": -560,
+      "y": 1280
+    },
     "season-browser-title": {
       "kind": "title1",
       "maxW": 6720,
@@ -319,28 +346,28 @@
       "x": 0,
       "y": -300
     },
-    "season-browser-q2": {
+    "season-browser-q5": {
       "x": -560,
-      "y": 640,
-      "text": "Open (show-detail): Detail Loading / Error / Not-found aren't drawn. Default: skeleton; 'Could not load this show. Try again.' + Retry; 'This show doesn't exist.' + link to this season.",
+      "y": 1600,
+      "text": "Open (season-hero): hero art — desktop uses the show's wide trailer thumbnail from Jikan (new optional contract field), else the poster; mobile always uses the poster.",
       "w": 440,
       "maxH": 280,
       "fill": "orange",
       "page": "season-browser"
     },
-    "season-browser-q3": {
+    "season-browser-q6": {
       "x": -560,
-      "y": 960,
-      "text": "Open (show-detail): nav shows only 'Season' until Watchlist / Tier list ship, so no tab leads to 'Page not found'.",
+      "y": 1920,
+      "text": "Open (season-hero): the hero shows only once the season has shows (not in Loading / Empty / Error) and on any season — badge names it, e.g. 'FEATURED · SPRING 2025'.",
       "w": 440,
       "maxH": 280,
       "fill": "orange",
       "page": "season-browser"
     },
-    "season-browser-q4": {
+    "season-browser-q7": {
       "x": -560,
-      "y": 1280,
-      "text": "Open (season-browser-ui): 'In watchlist ✓' on a card is a disabled state; removing happens on the Watchlist page.",
+      "y": 2240,
+      "text": "Open (season-hero): desktop header goes transparent over the hero only on season pages; every other page keeps the solid header.",
       "w": 440,
       "maxH": 280,
       "fill": "orange",

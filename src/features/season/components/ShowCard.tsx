@@ -1,15 +1,11 @@
 import { Link } from 'react-router'
 import { CoverImage } from '@/components/CoverImage'
 import type { Show } from '@/types/anime'
+import { showMeta } from '../showMeta'
 import { AddToWatchlistButton } from './AddToWatchlistButton'
 
 export interface ShowCardProps {
   show: Show
-}
-
-/** "MADHOUSE · Fridays · 28 eps"; unknown parts are left out, an unknown count is "? eps". */
-function metaLine({ studio, airingDay, episodes }: Show) {
-  return [studio, airingDay, `${episodes ?? '?'} eps`].filter(Boolean).join(' · ')
 }
 
 export function ShowCard({ show }: ShowCardProps) {
@@ -30,7 +26,7 @@ export function ShowCard({ show }: ShowCardProps) {
             {show.title}
           </h2>
           <span className="text-[0.8125rem] leading-[1.125rem] text-muted-foreground">
-            {metaLine(show)}
+            {showMeta(show)}
           </span>
         </div>
       </Link>

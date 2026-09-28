@@ -14,9 +14,18 @@ async function expectNoAxeViolations(page: Page) {
 test('home shows the current season as a grid of shows', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1, name: seasonLabel(current) })).toBeVisible()
-  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(12)
+  await expect(page.getByRole('article')).toHaveCount(12)
   await expect(page.getByText('12 shows')).toBeVisible()
   await expectNoAxeViolations(page)
+})
+
+test('the hero features the most popular show and opens its details', async ({ page }) => {
+  await page.goto('/season/2026/fall')
+  const hero = page.getByRole('region', { name: 'Jujutsu Kaisen' })
+  await expect(hero).toBeVisible()
+  await hero.getByRole('link', { name: /More info/ }).click()
+  await expect(page).toHaveURL('/anime/40748')
+  await expect(page.getByRole('heading', { level: 1, name: 'Jujutsu Kaisen' })).toBeVisible()
 })
 
 test('the next-season arrow changes the season and the URL', async ({ page }) => {
