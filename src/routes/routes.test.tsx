@@ -10,9 +10,9 @@ vi.mock('../lib/monitoring', () => ({ reportError: vi.fn() }))
 describe('routes', () => {
   beforeEach(() => vi.mocked(reportError).mockClear())
 
-  it('renders the items page at /', async () => {
+  it('renders the home page at /', async () => {
     renderRoute('/')
-    expect(await screen.findByRole('heading', { name: /items/i })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'senpai' })).toBeInTheDocument()
   })
 
   it('shows "Page not found" for an unknown URL', async () => {

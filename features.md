@@ -21,29 +21,94 @@ write it under "Open questions" rather than letting the agent guess.
 
 ---
 
-## Items (example — delete when you start your own)
+## Season browser
 
-**Who / why:** A user keeps a short list of items and adds new ones.
+**Who / why:** An anime fan wants to see what's airing this season and pick what to watch.
 
 **Behaviour**
 
-- The list shows every item by name.
-- "Add item" opens a form with one field: Name (required).
-- Saving adds the item to the list and clears the form; the form stays open.
+- Home shows the current season (e.g. "Fall 2026") as a grid of show cards: cover, title,
+  studio, episode count, airing day.
+- Prev / next arrows switch to other seasons.
+- Each card has "Add to watchlist"; once added it reads "In watchlist ✓".
+- Clicking a card opens a detail page: synopsis, genres, episodes, link to MyAnimeList.
 
 **States**
 
-- Loading: "Loading…"
-- Empty: "No items yet."
-- Load error (network, or the response breaks the contract): "Could not load items."
-- Save error: "Could not save the item. Try again." — the typed value is kept.
+- Loading: skeleton cards.
+- Empty: "No shows found for this season."
+- Error: "Could not load the season. Try again." with a retry button.
 
 **Edge cases**
 
-- Blank name → inline validation error, nothing is sent.
+- Unknown episode count → "? eps".
+- Missing cover → placeholder image.
 
 **Open questions**
 
-- None.
+- Filters / sort (genre, format TV/movie, popularity) in v1?
+- (Answered: show data comes from Jikan — MyAnimeList's public API.)
 
-**Status:** shipped
+**Status:** planned
+
+---
+
+## Watchlist + episode tracking
+
+**Who / why:** A viewer keeps track of which episode they're on for each show.
+
+**Behaviour**
+
+- Watchlist page lists added shows with a status: Watching / Completed / Plan to watch /
+  Dropped.
+- Each row shows progress "5 / 12" with +1 / −1 buttons.
+- Reaching the last episode asks "Mark as completed?".
+- Remove a show with an undo toast.
+- Tabs or a filter by status.
+
+**States**
+
+- Empty: "Your watchlist is empty — browse this season" (links to home).
+- Save error: "Could not save progress." — the change is reverted.
+
+**Edge cases**
+
+- Progress can't go below 0 or above the total (unless the total is unknown).
+- Adding a show already on the list is a no-op.
+
+**Open questions**
+
+- (Answered: local-only for v1 — stored in the browser, no accounts.)
+
+**Status:** planned
+
+---
+
+## Tier list
+
+**Who / why:** A fan ranks shows into S/A/B/C/D and shares the result.
+
+**Behaviour**
+
+- Rows S, A, B, C, D, plus an "Unranked" pool filled from the watchlist (or a chosen season).
+- Drag a show between tiers or reorder within a tier; keyboard-accessible.
+- Title for the list, e.g. "Fall 2026 ranking".
+- "Share" — see open questions.
+
+**States**
+
+- Empty pool: "Add shows to your watchlist to start ranking."
+- Shared list not found / invalid: "This tier list doesn't exist."
+
+**Edge cases**
+
+- A show appears at most once in a list.
+- Long titles truncate on cards, full title on hover / focus.
+
+**Open questions**
+
+- Sharing without a backend: export as an image, or a link with the list encoded in the URL?
+- Several tier lists per user, or one per season?
+- Custom tier names / colours?
+
+**Status:** planned

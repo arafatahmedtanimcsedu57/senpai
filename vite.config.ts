@@ -1,4 +1,5 @@
 import { gzipSync } from 'node:zlib'
+import { fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -53,6 +54,7 @@ export default defineConfig(({ mode }) => {
           telemetry: false,
         }),
     ],
+    resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
     build: { sourcemap: uploadSourceMaps ? 'hidden' : false },
     server: API_PROXY_TARGET
       ? { proxy: { '/api': { target: API_PROXY_TARGET, changeOrigin: true } } }

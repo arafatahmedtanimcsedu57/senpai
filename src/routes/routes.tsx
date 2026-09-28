@@ -15,7 +15,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        lazy: async () => ({ Component: (await import('./ItemsPage')).ItemsPage }),
+        lazy: async () => ({ Component: (await import('./HomePage')).HomePage }),
       },
     ],
   },

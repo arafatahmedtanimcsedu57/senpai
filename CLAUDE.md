@@ -1,4 +1,4 @@
-# Project conventions — react-sdd-starter
+# Project conventions — senpai
 
 Authoritative rules for this repo. Claude reads this every session — follow it over habit.
 (Project name, and the styling approach + UI library, are set during bootstrap.)
