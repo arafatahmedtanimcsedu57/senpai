@@ -88,7 +88,9 @@ watchlist,season-browser,show-detail,app-shell}`.
 
 - (Answered: local-only for v1 — stored in the browser, no accounts.)
 
-**Status:** planned
+**Status:** in progress — 1 of 2 shipped (`watchlist-page`: status tabs, progress +1 / −1,
+status select, empty state). Next `watchlist-actions` (remove + undo, "Mark as completed?",
+save error).
 
 ---
 
