@@ -4,15 +4,17 @@ import { renderRoute } from '../test/render'
 import { RootLayout } from './RootLayout'
 import { RouteError } from './RouteError'
 import { reportError } from '../lib/monitoring'
+import { seasonLabel, seasonOf } from '../lib/season'
 
 vi.mock('../lib/monitoring', () => ({ reportError: vi.fn() }))
 
 describe('routes', () => {
   beforeEach(() => vi.mocked(reportError).mockClear())
 
-  it('renders the home page at /', async () => {
+  it('renders the current season at /', async () => {
     renderRoute('/')
-    expect(await screen.findByRole('heading', { name: 'senpai' })).toBeInTheDocument()
+    const label = seasonLabel(seasonOf(new Date()))
+    expect(await screen.findByRole('heading', { level: 1, name: label })).toBeInTheDocument()
   })
 
   it('shows "Page not found" for an unknown URL', async () => {

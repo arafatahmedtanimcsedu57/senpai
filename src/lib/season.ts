@@ -25,3 +25,19 @@ export const nextSeason = (id: SeasonId) => shift(id, 1)
 export function seasonLabel({ year, season }: SeasonId) {
   return `${season[0].toUpperCase()}${season.slice(1)} ${year}`
 }
+
+/** "/season/2026/fall" */
+export function seasonPath({ year, season }: SeasonId) {
+  return `/season/${year}/${season}`
+}
+
+export function isSameSeason(a: SeasonId, b: SeasonId) {
+  return a.year === b.year && a.season === b.season
+}
+
+/** The season named by `/season/:year/:season`, or null when the URL is malformed. */
+export function parseSeasonParams(params: { year?: string; season?: string }): SeasonId | null {
+  const { year, season } = params
+  if (!year || !/^\d{4}$/.test(year) || !season || !isSeasonName(season)) return null
+  return { year: Number(year), season }
+}
