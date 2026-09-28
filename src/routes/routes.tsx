@@ -27,6 +27,15 @@ export const routes: RouteObject[] = [
         },
         lazy: async () => ({ Component: (await import('./SeasonPage')).SeasonPage }),
       },
+      {
+        path: 'anime/:id',
+        // A non-numeric id (e.g. /anime/abc) is a 404, shown by RouteError.
+        loader: ({ params }) => {
+          if (!/^\d+$/.test(params.id ?? '')) throw data(null, { status: 404 })
+          return null
+        },
+        lazy: async () => ({ Component: (await import('./ShowDetailPage')).ShowDetailPage }),
+      },
     ],
   },
 ]

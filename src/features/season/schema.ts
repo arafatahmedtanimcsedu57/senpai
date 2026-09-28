@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { isSeasonName } from '../../lib/season'
 import type { Show } from '../../types/anime'
 
 // Only the Jikan v4 fields the app uses (architecture.md → API contract). Unknown fields
@@ -18,6 +19,9 @@ export const jikanAnimeSchema = z.object({
   studios: z.array(named).default([]),
   genres: z.array(named).default([]),
   broadcast: z.object({ day: z.string().nullish() }).nullish(),
+  // The season it first aired in, e.g. "fall" / 2026; missing for older or unscheduled shows.
+  season: z.string().nullish(),
+  year: z.number().int().nullish(),
 })
 export type JikanAnime = z.input<typeof jikanAnimeSchema>
 
@@ -41,5 +45,9 @@ export function toShow(raw: z.output<typeof jikanAnimeSchema>): Show {
     synopsis: raw.synopsis ?? null,
     url: raw.url,
     members: raw.members ?? 0,
+    seasonId:
+      raw.season && isSeasonName(raw.season) && raw.year
+        ? { year: raw.year, season: raw.season }
+        : null,
   }
 }

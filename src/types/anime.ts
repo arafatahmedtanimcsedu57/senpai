@@ -21,6 +21,8 @@ export interface Show {
   url: string
   /** MyAnimeList members — the popularity used for ordering. */
   members: number
+  /** The season it aired in, when Jikan says. */
+  seasonId?: SeasonId | null
 }
 
 export type WatchStatus = 'watching' | 'plan-to-watch' | 'completed' | 'dropped'
