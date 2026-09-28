@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+playwright-report
+test-results
+coverage
+blob-report
+*.tsbuildinfo
+.claude/settings.local.json
+# Local cache of the impeccable design plugin (per machine)
+.impeccable/
