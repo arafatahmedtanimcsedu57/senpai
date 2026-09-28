@@ -27,4 +27,17 @@ describe('AppNav', () => {
     const nav = renderAt('/somewhere-else')
     expect(nav.getByRole('link', { name: 'Season' })).not.toHaveAttribute('aria-current')
   })
+
+  it('links Watchlist and marks it current on /watchlist only', () => {
+    const nav = renderAt('/watchlist')
+    const watchlist = nav.getByRole('link', { name: 'Watchlist' })
+    expect(watchlist).toHaveAttribute('href', '/watchlist')
+    expect(watchlist).toHaveAttribute('aria-current', 'page')
+    expect(nav.getByRole('link', { name: 'Season' })).not.toHaveAttribute('aria-current')
+  })
+
+  it('does not mark Watchlist current on the season page', () => {
+    const nav = renderAt('/')
+    expect(nav.getByRole('link', { name: 'Watchlist' })).not.toHaveAttribute('aria-current')
+  })
 })

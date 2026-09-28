@@ -1,4 +1,4 @@
-import { LayoutGrid, type LucideIcon } from 'lucide-react'
+import { LayoutGrid, List, type LucideIcon } from 'lucide-react'
 import { Link, useLocation } from 'react-router'
 import { cn } from '@/lib/utils'
 
@@ -10,7 +10,7 @@ interface NavItem {
   match: (pathname: string) => boolean
 }
 
-// One item per section that exists. Watchlist and Tier list add theirs when they ship, so no
+// One item per section that exists. Tier list adds its own when it ships, so no
 // tab ever leads to "Page not found".
 const NAV_ITEMS: NavItem[] = [
   {
@@ -18,6 +18,12 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Season',
     icon: LayoutGrid,
     match: (path) => path === '/' || path.startsWith('/season/') || path.startsWith('/anime/'),
+  },
+  {
+    to: '/watchlist',
+    label: 'Watchlist',
+    icon: List,
+    match: (path) => path === '/watchlist',
   },
 ]
 
