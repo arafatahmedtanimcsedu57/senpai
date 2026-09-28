@@ -17,7 +17,15 @@ describe('jikanAnimeSchema + toShow', () => {
       synopsis: expect.stringContaining('elf mage'),
       url: frieren.url,
       members: 1_200_000,
+      seasonId: { year: 2026, season: 'fall' },
     })
+  })
+
+  it('has no season when Jikan gives none or an unknown one', () => {
+    expect(
+      toShow(jikanAnimeSchema.parse({ ...frieren, season: null, year: null })).seasonId,
+    ).toBeNull()
+    expect(toShow(jikanAnimeSchema.parse({ ...frieren, season: 'autumn' })).seasonId).toBeNull()
   })
 
   it('falls back to the default title when there is no English title', () => {

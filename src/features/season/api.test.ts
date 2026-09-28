@@ -95,6 +95,20 @@ describe('getAnime', () => {
     expect(data).toMatchObject({ id: 57334, title: 'Dan Da Dan', studio: 'Science SARU' })
   })
 
+  it('retries once after a 429', async () => {
+    let calls = 0
+    server.use(
+      http.get(`${apiBaseUrl}/anime/:id`, () =>
+        ++calls === 1
+          ? new HttpResponse(null, { status: 429 })
+          : HttpResponse.json({ data: rawAnime[0] }),
+      ),
+    )
+    const { data } = await makeStore().dispatch(seasonApi.endpoints.getAnime.initiate(3))
+    expect(calls).toBe(2)
+    expect(data?.id).toBe(rawAnime[0].mal_id)
+  })
+
   it('fails with 404 for an unknown id', async () => {
     const { error } = await makeStore().dispatch(seasonApi.endpoints.getAnime.initiate(1))
     expect(error).toMatchObject({ status: 404 })
@@ -105,6 +119,6 @@ describe('getAnime', () => {
       http.get(`${apiBaseUrl}/anime/:id`, () => HttpResponse.json({ data: { mal_id: 1 } })),
     )
     const { error } = await makeStore().dispatch(seasonApi.endpoints.getAnime.initiate(2))
-    expect(error).toBeDefined()
+    expect(error).toMatchObject({ status: 'CUSTOM_ERROR' })
   })
 })

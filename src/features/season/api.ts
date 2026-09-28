@@ -1,4 +1,4 @@
-import type { FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import type { FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { api } from '../../services/api'
 import type { SeasonId, Show } from '../../types/anime'
 import { jikanAnimeResponseSchema, jikanSeasonPageSchema, toShow } from './schema'
@@ -13,6 +13,17 @@ function contractError(error: unknown): FetchBaseQueryError {
   return { status: 'CUSTOM_ERROR', error: `Jikan response broke the contract: ${String(error)}` }
 }
 
+/** One request; waits and retries once when Jikan answers 429 (rate limited). */
+type JikanResult = { data?: unknown; error?: FetchBaseQueryError }
+type JikanFetch = (args: string | FetchArgs) => JikanResult | PromiseLike<JikanResult>
+
+async function fetchWithRetry(baseQuery: JikanFetch, args: string | FetchArgs) {
+  const result = await baseQuery(args)
+  if (result.error?.status !== 429) return result
+  await sleep(jikanTiming.retryAfterMs)
+  return baseQuery(args)
+}
+
 export const seasonApi = api.enhanceEndpoints({ addTagTypes: ['Show'] }).injectEndpoints({
   endpoints: (build) => ({
     /** Every TV show of the season, each once, most popular first. */
@@ -25,11 +36,7 @@ export const seasonApi = api.enhanceEndpoints({ addTagTypes: ['Show'] }).injectE
             url: `seasons/${year}/${season}`,
             params: { filter: 'tv', sfw: true, page },
           }
-          let result = await baseQuery(args)
-          if (result.error?.status === 429) {
-            await sleep(jikanTiming.retryAfterMs)
-            result = await baseQuery(args)
-          }
+          const result = await fetchWithRetry(baseQuery, args)
           if (result.error) return { error: result.error }
           const parsed = jikanSeasonPageSchema.safeParse(result.data)
           if (!parsed.success) return { error: contractError(parsed.error) }
@@ -44,8 +51,13 @@ export const seasonApi = api.enhanceEndpoints({ addTagTypes: ['Show'] }).injectE
     }),
     /** One show; a 404 error means Jikan doesn't know the id. */
     getAnime: build.query<Show, number>({
-      query: (id) => `anime/${id}`,
-      transformResponse: (raw) => toShow(jikanAnimeResponseSchema.parse(raw).data),
+      async queryFn(id, _api, _extra, baseQuery) {
+        const result = await fetchWithRetry(baseQuery, `anime/${id}`)
+        if (result.error) return { error: result.error }
+        const parsed = jikanAnimeResponseSchema.safeParse(result.data)
+        if (!parsed.success) return { error: contractError(parsed.error) }
+        return { data: toShow(parsed.data.data) }
+      },
       providesTags: (_result, _error, id) => [{ type: 'Show', id }],
     }),
   }),

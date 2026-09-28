@@ -31,6 +31,9 @@ function anime(
     studios: [{ name: extra.studio }],
     genres: genres.map((name) => ({ name })),
     broadcast: { day: extra.day },
+    // Sakamoto Days has no season, so the "no season" path stays covered.
+    season: id === 58939 ? null : 'fall',
+    year: id === 58939 ? null : 2026,
   }
 }
 
