@@ -34,10 +34,15 @@ export interface WatchlistEntry {
   id: number
   title: string
   imageUrl: string | null
+  /** null for entries saved before v2 (see useWatchlistStore's migrate). */
+  studio: string | null
+  airingDay: string | null
   episodes: number | null
   status: WatchStatus
   /** Episodes watched. */
   progress: number
   /** ISO timestamp. */
   addedAt: string
+  /** ISO timestamp of the last status or progress change. */
+  updatedAt: string
 }

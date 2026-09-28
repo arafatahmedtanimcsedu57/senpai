@@ -372,6 +372,42 @@
       "maxH": 280,
       "fill": "orange",
       "page": "season-browser"
+    },
+    "watchlist-q2": {
+      "x": -560,
+      "y": 640,
+      "text": "Open (watchlist-page): mobile rows have no status select drawn. Default: show it under the title on mobile too.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "watchlist"
+    },
+    "watchlist-q3": {
+      "x": -560,
+      "y": 960,
+      "text": "Open (watchlist-page): opens on the first tab with shows (Watching → Plan to watch → Completed → Dropped). An empty tab says 'No shows here yet.'",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "watchlist"
+    },
+    "watchlist-q4": {
+      "x": -560,
+      "y": 1280,
+      "text": "Open (watchlist-page): +1 on a 'Plan to watch' show moves it to Watching; setting Completed jumps progress to the total.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "watchlist"
+    },
+    "watchlist-q5": {
+      "x": -560,
+      "y": 1600,
+      "text": "Open (watchlist-actions): Undo lasts 5 s; 'Not yet' in 'Mark as completed?' changes nothing.",
+      "w": 440,
+      "maxH": 280,
+      "fill": "orange",
+      "page": "watchlist"
     }
   },
   "order": [
