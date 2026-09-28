@@ -49,9 +49,9 @@ write it under "Open questions" rather than letting the agent guess.
 - Filters / sort (genre, format TV/movie, popularity) in v1?
 - (Answered: show data comes from Jikan — MyAnimeList's public API.)
 
-**Status:** in progress — 2 of 4 shipped (`season-contract`: Jikan data + watchlist store;
-`season-browser-ui`: season grid, prev/next, loading / empty / error, add to watchlist).
-Next `show-detail` (header, nav, detail page), then `season-hero` (featured hero).
+**Status:** in progress — 3 of 4 shipped (`season-contract`: Jikan data + watchlist store;
+`season-browser-ui`: season grid, prev/next, loading / empty / error, add to watchlist;
+`show-detail`: app header + nav, show detail page). Next `season-hero` (featured hero).
 
 ---
 
